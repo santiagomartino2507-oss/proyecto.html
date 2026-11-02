@@ -1,5 +1,5 @@
-let currentLang = localStorage.getItem("preferredLang") || "en";  // Get the saved language or use English.
-let translations = {}; // Create an empty object to store the translations later.
+let currentLang = localStorage.getItem("preferredLang") || "en"; // Remember the user's language.
+let translations = {}; // Translation storage.
 
 fetch("/proyecto.html/assets/json/translation.json") // Request the translation file.
   .then((response) => { // Run when the server responds.
@@ -13,22 +13,23 @@ fetch("/proyecto.html/assets/json/translation.json") // Request the translation 
 
     applyLanguage(); // Apply the current language.
   })
+  
   .catch((error) => { // Handle an error from the steps above.
     console.error("Failed to load translation file:", error); // Show the error in the browser console.
   });
 
 function applyLanguage() { // Create a function to apply the current language.
-  document.documentElement.lang = currentLang;
-  const blocks = document.querySelectorAll("[data-i18n-block]");
-  blocks.forEach((block) => {
+  document.documentElement.lang = currentLang; // Update the HTML language.
+  const blocks = document.querySelectorAll("[data-i18n-block]"); // Find the translation blocks.
+  blocks.forEach((block) => { // Go through the blocks one by one.
     const key = block.getAttribute("data-i18n-block"); // Get this block's translation key.
     if (translations[currentLang] && translations[currentLang][key]) { // Check that the language and translation exist.
-      block.innerHTML = translations[currentLang][key];
+      block.innerHTML = translations[currentLang][key]; // Update the block content.
     }
   });
 
-  const textElements = document.querySelectorAll("[data-i18n]");
-  textElements.forEach((el) => {
+  const textElements = document.querySelectorAll("[data-i18n]"); // Find the text elements to translate.
+  textElements.forEach((el) => { // Go through the elements one by one.
 
     const key = el.getAttribute("data-i18n"); // Get this element's translation key.
 
@@ -38,26 +39,24 @@ function applyLanguage() { // Create a function to apply the current language.
   });
 
   const flag = document.getElementById("lang-flag"); // Find the flag image.
-  const toggle = document.getElementById("lang-toggle"); // Find the language button.
-  const label = currentLang === "en" ? "Switch to Spanish" : "Cambiar a inglés";
+  const label = currentLang === "en" ? "Switch to Spanish" : "Cambiar a inglés"; // Choose the flag description.
   if (flag) { // Check that the flag image exists.
-    flag.src = currentLang === "en"
+    flag.src = currentLang === "en" // Choose the flag image.
       ? "https://flagcdn.com/24x18/mx.png"
       : "https://flagcdn.com/24x18/gb.png";
-    flag.alt = label;
+    flag.alt = label; // Set the alternative text.
   }
-  if (toggle) toggle.setAttribute("aria-label", label);
 }
 
 function toggleLanguage() { // Create a function to switch languages.
-  if (Object.keys(translations).length === 0) {
+  if (Object.keys(translations).length === 0) { // Check for empty translations.
     alert("Translation data is still loading. Please try again in a moment."); // Show a message to the user.
     return; // Stop this function.
   }
 
-  currentLang = currentLang === "en" ? "es" : "en";
+  currentLang = currentLang === "en" ? "es" : "en"; // Switch to the other language.
 
-  localStorage.setItem("preferredLang", currentLang);
+  localStorage.setItem("preferredLang", currentLang); // Save the user's language.
 
   applyLanguage(); // Apply the current language.
 }
