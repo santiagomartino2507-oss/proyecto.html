@@ -1,17 +1,17 @@
-<?php
+<?php // Start PHP.
 session_start(); // Keep track of the logged-in user.
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { // Check for a non-POST request.
     header('Location: /proyecto.html/index.php?view=login'); // Go to the login form.
     exit; // Stop the script.
-}
+} // End the request check.
 
 $input_user = $_POST['username'] ?? ''; // Get the submitted username.
 $input_pass = $_POST['password'] ?? ''; // Get the submitted password.
 if (!is_string($input_user) || !is_string($input_pass) || trim($input_user) === '' || $input_pass === '') { // Check the data types and empty fields.
     header('Location: /proyecto.html/index.php?view=login&error=' . urlencode('Please fill in both username and password.')); // Return to the form with an error in the URL.
     exit; // Stop the script.
-}
+} // End the input check.
 
 require_once __DIR__ . '/db_connect.php'; // Load the database connection.
 $location = '/proyecto.html/index.php?view=login&error=' . urlencode('Invalid username or password'); // Where to go if login fails.
@@ -27,14 +27,14 @@ try { // Try the database steps.
             session_regenerate_id(true); // New session ID for security.
             $_SESSION['username'] = $user['username']; // Remember who logged in.
             $location = '/proyecto.html/php/welcome.php'; // Where to go after a successful login.
-        }
-    }
-    $stmt->close();
-} catch (mysqli_sql_exception $error) {
-    error_log($error->getMessage());
-    $location = '/proyecto.html/index.php?view=login&error=' . urlencode('Login unavailable. Please try again later.');
-}
+        } // End the password check.
+    } // End the account check.
+    $stmt->close(); // Close the prepared statement.
+} catch (mysqli_sql_exception $error) { // Catch the database error in $error.
+    error_log($error->getMessage()); // Save the error message in the server log.
+    $location = '/proyecto.html/index.php?view=login&error=' . urlencode('Login unavailable. Please try again later.'); // Save the login URL and error message.
+} // End the catch block.
 
-$conn->close();
-header('Location: ' . $location);
-exit;
+$conn->close(); // Close the database connection.
+header('Location: ' . $location); // Send the user to the saved URL.
+exit; // Stop this PHP script.
