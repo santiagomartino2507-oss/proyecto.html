@@ -6,7 +6,7 @@ session_start(); // Start or resume the session.
 
 <head> <!-- Page settings and resources. -->
     <meta charset="UTF-8"> <!-- Text encoding for accents and symbols. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Device width; normal initial zoom. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sets the viewport width to match the device. -->
     <title>Pitch Point</title> <!-- Browser tab title. -->
     <link rel="stylesheet" href="/proyecto.html/assets/css/style.css"> <!-- Load the shared CSS. -->
 </head> <!-- End page settings. -->
@@ -18,7 +18,7 @@ session_start(); // Start or resume the session.
             <h1 class="title-logo">PITCH <br> POINT</h1> <!-- Site name; br adds a line break. -->
         </div> <!-- End the logo group. -->
 
-        <input type="checkbox" id="nav-toggle" class="nav-toggle"> <!-- This checkbox controls the mobile menu. -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle"> <!-- Create a checkbox for mobile design. -->
         <label for="nav-toggle" class="hamburger">&#9776;</label> <!-- Shows the menu icon and connects it to the checkbox. -->
 
         <nav> <!-- Main navigation. -->
@@ -34,12 +34,12 @@ session_start(); // Start or resume the session.
         </nav> <!-- End main navigation. -->
 
         <div class="user-actions"> <!-- Account area changes with the session. -->
-            <?php // Choose which account options to show.
+            <?php 
             if (isset($_SESSION['username'])) { // Is a username stored in the session?
                 echo '<div class="welcome-message">' . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') . '</div>'; // Show the HTML-escaped username.
-                echo '<a href="/proyecto.html/php/logout.php" data-i18n="logout" class="logout-button">Logout</a>'; // Show the translated logout link.
+                echo '<a href="/proyecto.html/php/logout.php" data-i18n="logout" class="logout-button">Logout</a>'; // Show the logout link.
             } else { // No logged-in user.
-                echo '<a href="/proyecto.html/index.php?view=login" id="login-btn" data-i18n="account" class="login-button">Account</a>'; // Show the translated login link.
+                echo '<a href="/proyecto.html/index.php?view=login" id="login-btn" data-i18n="account" class="login-button">Account</a>'; // Show the login link.
             } // End the session check.
             /* Continue with HTML. */ ?>
         </div> <!-- End account options. -->

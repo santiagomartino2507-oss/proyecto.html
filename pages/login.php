@@ -21,12 +21,12 @@
 
         <h1 data-i18n="login-title">Welcome Back</h1> <!-- Show the translatable login heading. -->
 
-        <form id="login-form" action="/proyecto.html/php/login.php" method="post"> <!-- Send login details to PHP with POST. -->
+        <form id="login-form" action="/proyecto.html/php/login.php" method="post"> <!-- Group the fields and send their values to PHP using POST. -->
 
-            <label for="username" data-i18n="login-username">Username</label> <!-- Connect the label to the username field. -->
+            <label for="username" data-i18n="login-username">Username</label> <!-- Clicking this text focuses the username field. -->
             <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required> <!-- Require a username and allow autofill. -->
 
-            <label for="password" data-i18n="login-password">Password</label> <!-- Connect the label to the password field. -->
+            <label for="password" data-i18n="login-password">Password</label> <!-- Clicking this text focuses the password field. -->
             <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required> <!-- Hide typed characters and allow saved passwords. -->
 
 
@@ -35,8 +35,8 @@
             <button type="submit" data-i18n="login-btn">Sign In</button> <!-- Submit the login form. -->
 
         </form> <!-- Close the form. -->
-        <span> <!-- Group the account prompt and link. -->
-            <span data-i18n="login-register-text">Don't have an account?</span> <!-- Ask if the user needs an account. -->
+        <span> <!-- Keep the question and link together. -->
+            <span data-i18n="login-register-text">Don't have an account?</span> <!-- Translate this question separately from the link. -->
             <a href="/proyecto.html/index.php?view=register" data-i18n="login-register-link">Register</a> <!-- Link to the registration form. -->
         </span> <!-- Close the account prompt. -->
     </div> <!-- Close the account panel. -->
