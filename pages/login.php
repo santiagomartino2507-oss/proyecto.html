@@ -1,49 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Use HTML5. -->
+<html lang="en"> <!-- Set the initial page language. -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Pitch Point</title>
-    <link rel="stylesheet" href="/proyecto.html/assets/css/style.css">
-</head>
+<head> <!-- Start the page settings. -->
+    <meta charset="UTF-8"> <!-- Use UTF-8 for text. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Use the device width. -->
+    <title>Login | Pitch Point</title> <!-- Set the login tab title. -->
+    <link rel="stylesheet" href="/proyecto.html/assets/css/style.css"> <!-- Load the shared styles. -->
+</head> <!-- End the page settings. -->
 
-<body>
+<body> <!-- Start the visible content. -->
 
-    <a href="/proyecto.html/pages/paginaprincipal.php" class="back-button" data-i18n="back-btn">← Back</a>
-
-
-    <button id="lang-toggle" class="lang-btn-fixed" onclick="toggleLanguage()">
-        <img id="lang-flag" src="https://flagcdn.com/24x18/mx.png" alt="Switch to Spanish">
-    </button>
-
-    <div class="profile">
-
-        <h1 data-i18n="login-title">Welcome Back</h1>
-
-        <form id="login-form" action="/proyecto.html/php/login.php" method="post">
-
-            <label for="username" data-i18n="login-username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required>
-
-            <label for="password" data-i18n="login-password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+    <a href="/proyecto.html/pages/paginaprincipal.php" class="back-button" data-i18n="back-btn">← Back</a> <!-- Go back to the home page. -->
 
 
-            <div id="feedback" role="status" aria-live="polite"></div>
+    <button id="lang-toggle" class="lang-btn-fixed" onclick="toggleLanguage()"> <!-- Switch languages on click. -->
+        <img id="lang-flag" src="https://flagcdn.com/24x18/mx.png" alt="Switch to Spanish"> <!-- Show the language flag and its alt text. -->
+    </button> <!-- Close the language button. -->
 
-            <button type="submit" data-i18n="login-btn">Sign In</button>
+    <div class="profile"> <!-- Group the account form and links. -->
 
-        </form>
-        <span>
-            <span data-i18n="login-register-text">Don't have an account?</span>
-            <a href="/proyecto.html/index.php?view=register" data-i18n="login-register-link">Register</a>
-        </span>
-    </div>
+        <h1 data-i18n="login-title">Welcome Back</h1> <!-- Show the translatable login heading. -->
+
+        <form id="login-form" action="/proyecto.html/php/login.php" method="post"> <!-- Send login details to PHP with POST. -->
+
+            <label for="username" data-i18n="login-username">Username</label> <!-- Connect the label to the username field. -->
+            <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required> <!-- Require a username and allow autofill. -->
+
+            <label for="password" data-i18n="login-password">Password</label> <!-- Connect the label to the password field. -->
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required> <!-- Hide typed characters and allow saved passwords. -->
 
 
-    <script src="/proyecto.html/assets/js/script.js"></script>
-    <script src="/proyecto.html/assets/js/translation.js"></script>
-</body>
+            <div id="feedback" role="status" aria-live="polite"></div> <!-- Show feedback without interrupting screen readers. -->
 
-</html>
+            <button type="submit" data-i18n="login-btn">Sign In</button> <!-- Submit the login form. -->
+
+        </form> <!-- Close the form. -->
+        <span> <!-- Group the account prompt and link. -->
+            <span data-i18n="login-register-text">Don't have an account?</span> <!-- Ask if the user needs an account. -->
+            <a href="/proyecto.html/index.php?view=register" data-i18n="login-register-link">Register</a> <!-- Link to the registration form. -->
+        </span> <!-- Close the account prompt. -->
+    </div> <!-- Close the account panel. -->
+
+
+    <script src="/proyecto.html/assets/js/script.js"></script> <!-- Load form validation and feedback. -->
+    <script src="/proyecto.html/assets/js/translation.js"></script> <!-- Load the translation script. -->
+</body> <!-- End the visible content. -->
+
+</html> <!-- Close the HTML document. -->

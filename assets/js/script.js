@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault(); // Stop the form from being sent.
         if (feedback) {
           // Check that the message element exists.
-          feedback.textContent = "Please fill in both username and password."; // Ask the user to fill in both fields.
+          feedback.textContent = "Please fill in both username and password."; // Tell the user to fill in both fields.
           feedback.setAttribute("data-i18n", "err-fill-both"); // Set this message's translation key.
           applyLanguage(); // Apply the current language.
           feedback.className = "error lbl-error"; // Apply the error CSS classes.

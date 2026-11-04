@@ -21,9 +21,9 @@ try { // Try the database steps.
     $stmt->execute(); // Run the query.
     $result = $stmt->get_result(); // Get the result.
 
-    if ($result->num_rows === 1) { // Found exactly one account?
+    if ($result->num_rows === 1) { // Check if the account was found
         $user = $result->fetch_assoc(); // Get that account's data.
-        if (password_verify($input_pass, $user['password'])) { // Is the password correct?
+        if (password_verify($input_pass, $user['password'])) { // Check if the password is correct
             session_regenerate_id(true); // New session ID for security.
             $_SESSION['username'] = $user['username']; // Remember who logged in.
             $location = '/proyecto.html/php/welcome.php'; // Where to go after a successful login.
